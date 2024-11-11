@@ -13,7 +13,7 @@
         BackgroundColor="Blue"
         Padding="20"/>
 
-        <ListView x:Name="listaEstudiantes">
+        <ListView x:Name="listaEstudiantes" ItemSelected="listaEstudiantes_ItemSelected" RowHeight="50" HeightRequest="400">
 
             <ListView.Header>
                 <Grid Padding="12" BackgroundColor="Yellow">
@@ -53,6 +53,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button x:Name="btnInsetar" Text="Insertar" Clicked="btnInsetar_Clicked"/>
 
 
     </VerticalStackLayout>

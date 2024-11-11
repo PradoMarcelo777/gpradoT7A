@@ -6,7 +6,7 @@ namespace gpradoT7A.Views;
 
 public partial class vEstudiante : ContentPage
 {
-    private const string Url = "http://localhost:8081/uisraelws/estudiante.php";
+    private const string Url = "http://192.168.100.35:8081/uisraelws/estudiante.php";
     private readonly HttpClient cliente = new HttpClient();
 
     //la lista en la interfaz de usuario se actualizara automaticamente cuando se agregue o elimines un estudiante.
@@ -27,5 +27,16 @@ public partial class vEstudiante : ContentPage
         todosLosEstudiantes = new ObservableCollection<Estudiante>(mostrarEstudiantes); // Convierte la lista en ObservableCollection
         listaEstudiantes.ItemsSource = todosLosEstudiantes; // Asigna la coleccion a la fuente de datos de la lista en la UI
 
+    }
+
+    private void btnInsetar_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new vInsertar());
+    }
+
+    private void listaEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        var objEstudiante = (Estudiante)e.SelectedItem;
+        Navigation.PushAsync(new vActualizarEliminar(objEstudiante));
     }
 }
